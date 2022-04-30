@@ -38,7 +38,10 @@ public class MovieController {
     @GetMapping("/{movieId}")
     public MovieFull getMovieById(@PathVariable(value = "movieId") Long id) {
         logger.info("Get movie by id#{} from Database", id);
-        return movieService.getById(id);
+        MovieFull movieFull = movieService.getById(id);
+        System.out.println(movieFull);
+        System.out.println(movieFull.getReviews().get(0).getNickname());
+        return movieFull;
     }
 
     @GetMapping(path = "/random")

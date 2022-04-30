@@ -1,7 +1,6 @@
 package com.store.movie;
 
 import com.store.movie.domain.Movie;
-import com.store.movie.domain.MovieFull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -28,15 +27,16 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findMoviesByGenreId(Long id);
 
 
-    @Query(nativeQuery = true, value = "SELECT mg.movie_id, m.name_target, m.name_origin, m.year_of_release, m.description, " +
-            "m.rating, m.price, m.picture_path, mc.country_id, c.country_name, " +
-            "mg.genre_id, g.name, r.review_id, r.movie_id, r.text " +
+    @Query(nativeQuery = true, value = "SELECT mg.movie_id, m.name_target, m.name_origin, " +
+            "m.year_of_release, m.description, m.rating, m.price, m.picture_path, mc.country_id, " +
+            "c.country_name, mg.genre_id, g.name, r.user_id, r.review_id, r.movie_id, r.text, u.nickname " +
             "FROM movie m " +
             "LEFT JOIN movie_countries AS mc ON (m.movie_id = mc.movie_id)" +
             "LEFT JOIN country AS c ON (mc.country_id = c.country_id)" +
             "LEFT JOIN movie_genre AS mg ON (mc.movie_id = mg.movie_id)" +
             "LEFT JOIN genre AS g ON (mg.genre_id = g.genre_id)" +
             "LEFT JOIN review AS r ON (mg.movie_id = r.movie_id)" +
+            "LEFT JOIN users AS u ON (r.user_id = u.id)" +
             "WHERE m.movie_id = ?;")
     Optional<Movie> getMovieByMovieId(Long id);
 

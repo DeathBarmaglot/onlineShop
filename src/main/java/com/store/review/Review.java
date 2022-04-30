@@ -32,12 +32,14 @@ public class Review {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private String nickname;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Review review = (Review) o;
-        return reviewId != null && Objects.equals(reviewId, review.reviewId);
+        return reviewId.equals(review.reviewId) && text.equals(review.text) && movie.equals(review.movie) && nickname.equals(review.nickname);
     }
 
     @Override
@@ -47,8 +49,11 @@ public class Review {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "reviewId = " + reviewId + ", " +
-                "text = " + text + ")";
+        return "Review{" +
+                "reviewId=" + reviewId +
+                ", text='" + text + '\'' +
+                ", movie=" + movie.getNameOrigin() +
+                ", nickname='" + nickname + '\'' +
+                '}';
     }
 }
