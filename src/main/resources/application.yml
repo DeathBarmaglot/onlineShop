@@ -30,3 +30,10 @@ server:
   error:
     include-binding-errors: always
     include-message: always
+
+currency:
+  cron:
+    time: 1 0 16 * * *
+
+  nbu:
+    url: https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json

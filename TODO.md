@@ -41,3 +41,9 @@ Response example:{
 "reviews": [{"id": 1,"user": "id": 3,"nickname": "Дарлин Эдвардс"},"text": "Гениальное кино!"},
 {"id": 2,"user": {"id": 4,"nickname": "Габриэль Джексон"},"text": "Кино это является"}]
 }
+B-7
+1. In DB, all prices are stored in UAH.
+2. Price can be converted to USD or EUR.
+3. For example, /v1/movie/{movieId}?currency=USD.
+4. Prices should be converted according to today NBU rate.
+5. By default, selected currency is UAH.

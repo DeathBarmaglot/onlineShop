@@ -14,8 +14,9 @@ public class RequestProps {
 
     private SortDirection rating;
     private SortDirection price;
-    private SortDirection id;
+    private Long id;
     private SortField field;
+    private String currency;
 
     public List<Order> getOrder() {
         List<Order> orders = new ArrayList<>();

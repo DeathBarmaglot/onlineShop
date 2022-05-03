@@ -1,11 +1,13 @@
 package com.store.movie.impl;
 
 import com.store.model.RequestProps;
+import com.store.model.currency.DefaultExchangeService;
 import com.store.movie.MovieRepository;
 import com.store.movie.MovieService;
 import com.store.movie.domain.Movie;
 import com.store.movie.domain.MovieDto;
 import com.store.movie.domain.MovieFull;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -15,13 +17,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class DefaultMovieService implements MovieService {
     final private ModelMapper modelMapper = new ModelMapper();
     final private MovieRepository movieRepository;
-
-    public DefaultMovieService(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
-    }
+    final private DefaultExchangeService exchangeService;
 
     @Override
     public List<MovieDto> getAll(RequestProps props) {
@@ -53,8 +53,10 @@ public class DefaultMovieService implements MovieService {
     }
 
     @Override
-    public MovieFull getById(Long id) {
-        Movie movie = movieRepository.getMovieByMovieId(id).orElseThrow();
+    public MovieFull getById(RequestProps props) {
+        Movie movie = movieRepository.getMovieByMovieId(props.getId()).orElseThrow();
+        Double exchange = exchangeService.exchange(movie.getPrice(), props.getCurrency());
+        movie.setPrice(exchange);
         return modelMapper.map(movie, MovieFull.class);
     }
 }

@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "currency.cron.time",
+      "type": "java.lang.String",
+      "description": "Description for currency.cron.time."
+    },
+    {
+      "name": "currency.nbu.url",
+      "type": "java.lang.String",
+      "description": "Description for currency.nbu.url."
+    }
+  ] }

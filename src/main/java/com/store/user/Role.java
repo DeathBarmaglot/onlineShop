@@ -23,7 +23,7 @@ public class Role {
     private String token;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "users")
     private User user;
 
 }

@@ -12,7 +12,7 @@ public interface MovieService {
 
     List<MovieDto> getAll(RequestProps props);
 
-    MovieFull getById(Long id);
+    MovieFull getById(RequestProps props);
 
     List<MovieDto> getRandom();
 
