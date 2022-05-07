@@ -10,11 +10,13 @@
 * [SFTP](http://127.0.0.1:22/)
 * [NGINX](http://127.0.0.1:80/)
 * [Python](http://127.0.0.1/:5050)
+* [Messaging with Redis](https://)
 
 ### Guides
 
-* [Accessing Data with JPA](https://)
-* [Messaging with Redis](https://)
+* [Accessing Data with Heroku](https://web-online-store.herokuapp.com/))
+* [Building a React with Netlify](https://reliable-dango-46b82b.netlify.app)
+
 * [Building a RESTful Web Service](https://)
 * [Serving Web Content with Spring MVC](https://)
 * [Building REST services with Spring](https://)
