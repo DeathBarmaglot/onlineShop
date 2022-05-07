@@ -4,22 +4,22 @@ import { AddShoppingCart } from '@material-ui/icons';
 
 import useStyles from '../styles';
 
-const Product = ({ product }) => {
+const Movie = ({ movie }) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.media} image={product.image} title={product.name} />
+      <CardMedia className={classes.media} image={movie.image} title={movie.name} />
       <CardContent>
         <div className={classes.cardContent}>
           <Typography gutterBottom variant="h5">
-            {product.name}
+            {movie.name}
           </Typography>
           <Typography gutterBottom variant="h5">
-            ${product.price}
+            ${movie.price}
           </Typography>
         </div>
-        <Typography variant="body2" color="textSecondary">{product.description}</Typography>
+        <Typography variant="body2" color="textSecondary">{movie.description}</Typography>
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
         <IconButton aria-label="Add to Cart" onClick=''>
@@ -30,4 +30,4 @@ const Product = ({ product }) => {
   );
 };
 
-export default Product;
+export default Movie;

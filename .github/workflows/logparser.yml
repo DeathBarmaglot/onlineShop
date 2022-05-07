@@ -1,0 +1,53 @@
+name: Online-Shop
+
+env:
+  PACK_NAME: "docker-compose ${{ github.sha }}"
+  APP_NAME: "docker-compose"
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  DEPLOY_PACKAGE_NAME: "log_xlsx_${{ github.sha }}.zip"
+  
+on:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+  workflow_dispatch:
+
+jobs:
+  my_ubuntu:
+    runs-on: ubuntu-latest 
+    steps:
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        echo -e "Host *\n\tStrictHostKeyChecing no\n\n" > ~/.ssh/config
+    - name: git clone
+      uses: actions/checkout@v1
+         
+    - name: docker-compose build
+      run: |
+        pwd
+        ls -la
+        cd docker
+        ls -la
+        docker-compose up -d --force-recreate
+
+    - name: Create ZIP artifacts
+      run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+    - name: Copy Deployment package
+      run : cp ${{ env.DEPLOY_PACKAGE_NAME }}  http://${{ env.PACKAGE_PATH }}
+    - name: git push
+      run: |
+       git config --global user.email "poliyakpavlo@gmail.com"
+       git config --global user.name "PolyakPavlo" 
+       git add ${{ env.DEPLOY_PACKAGE_NAME }}
+       git commit -m "movie"
+       git status
+
+    - name: CleanUp
+      run: |
+        rm -r ~/.ssh
