@@ -4,13 +4,6 @@ services:
   java:
     build: docker/java
 
-  tomcat:
-    build: tomcat
-    ports:
-      - "8080:8080"
-    links:
-      - postgres
-
   sftp:
     build: docker/ftp
     container_name: sftp
@@ -78,7 +71,6 @@ services:
       POSTGRES_DB: movies
       PGDATA: /data/postgres
     volumes:
-      - database-data:/var/lib/postgresql/data/
       - postgres:/data/postgres
     ports:
       - "5432:5432"

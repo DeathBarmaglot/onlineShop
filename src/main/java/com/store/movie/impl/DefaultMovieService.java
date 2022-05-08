@@ -2,8 +2,6 @@ package com.store.movie.impl;
 import com.store.movie.MovieRepository;
 import com.store.movie.MovieService;
 import com.store.movie.domain.Movie;
-import com.store.movie.domain.MovieDto;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

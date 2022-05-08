@@ -2,7 +2,7 @@
 <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>log/movies.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-        <FileNamePattern>movieland-%d{yyyy-MM-dd}.log.%i</FileNamePattern>
+        <FileNamePattern>movie-%d{yyyy-MM-dd}.log.%i</FileNamePattern>
         <maxFileSize>5mb</maxFileSize>
     </rollingPolicy>
     <encoder>

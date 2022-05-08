@@ -1,7 +1,7 @@
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s ease-in-out;
+    animation: App-logo-spin infinite 10s linear;
+    margin-right: 20px;
   }
 }
 
@@ -19,7 +19,7 @@
     left: 0px;
     transform: rotate(0deg);
   }
-  50% {
+  100% {
     left: 100px;
     transform: rotate(360deg);
   }
