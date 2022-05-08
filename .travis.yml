@@ -9,7 +9,6 @@ script:
   - sudo ./mvn clean package -X
   - sudo ./java -Dserver.port=8080 -jar target/movie-0.0.1-SNAPSHOT.jar
   - sudo ./docker-compose up -d --force-recreate
-  - sudo ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
   - bash <(curl -s https://web-online-store.herokuapp.com/)
 
 after_success: bash <(curl -s https://reliable-dango-46b82b.netlify.app/)
