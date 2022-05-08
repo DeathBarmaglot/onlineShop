@@ -4,7 +4,7 @@ env:
   PACK_NAME: "docker-compose ${{ github.sha }}"
   APP_NAME: "docker-compose"
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-  DEPLOY_PACKAGE_NAME: "log_xlsx_${{ github.sha }}.zip"
+  DEPLOY_PACKAGE_NAME: "log_${{ github.sha }}.zip"
   
 on:
   push:
@@ -31,27 +31,29 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Online-shop
-      run: java $JAVA_OPTS -jar target/movie-0.0.1-SNAPSHOT.jar -Dserver.port=$PORT $JAR_OPTS
-         
     - name: docker-compose build
       run: |
         pwd
         ls -la
         docker-compose up -d --force-recreate
 
-
+    - name: Online-shop
+      run: java $JAVA_OPTS -jar target/movie-0.0.1-SNAPSHOT.jar -Dserver.port=$PORT $JAR_OPTS
+         
     - name: Create ZIP artifacts
       run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+
     - name: Copy Deployment package
       run : cp ${{ env.DEPLOY_PACKAGE_NAME }}  http://${{ env.PACKAGE_PATH }}
-    - name: git push
+
+    - name: git push heroku
       run: |
        git config --global user.email "poliyakpavlo@gmail.com"
        git config --global user.name "PolyakPavlo" 
-       git add ${{ env.DEPLOY_PACKAGE_NAME }}
-       git commit -m "movie"
        git status
+       git add ${{ env.DEPLOY_PACKAGE_NAME }}      
+       git commit -m "movie"      
+       git push heroku master
 
     - name: CleanUp
       run: |

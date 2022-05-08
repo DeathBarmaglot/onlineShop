@@ -2,21 +2,22 @@
 
 ### Reference Documentation
 
-* [React](http://127.0.0.1:3000/)
-* [React 2](http://127.0.0.1:7000/)
-* [Spring tomcat Server](http://127.0.0.1:8080/)
-* [DevTools](http://127.0.0.1:5500/)
-* [Postgres+PGAdmin](http://127.0.0.1:5432/)
-* [SFTP](http://127.0.0.1:22/)
-* [NGINX](http://127.0.0.1:80/)
-* [Python](http://127.0.0.1/:5050)
-* [Messaging with Redis](https://)
+* [React](http://172.16.128.10:3000/)
+* [Spring tomcat Server](http://172.16.128.10:8080/)
+* [DevTools](http://172.16.128.10:5500/)
+* [Postgres+PGAdmin](http://172.16.128.10:5432/)
+* [CORS](http://172.16.128.10:7000/)
+* [Nginx](http://172.16.128.10:80/)
+* [Python pipeline](http://172.16.128.1:5050)
+* [SFTP](http://172.16.128.10:22/)
+* [Messaging with Redis](http://172.16.128.10/:6789)
 
 ### Guides
 
 * [Accessing Data with Heroku](https://web-online-store.herokuapp.com/))
 * [Building a React with Netlify](https://reliable-dango-46b82b.netlify.app)
+* [Instance Ubuntu with ssh](https://online.movie.org)
 
-* [Building a RESTful Web Service](https://)
 * [Serving Web Content with Spring MVC](https://)
 * [Building REST services with Spring](https://)
+* [Flyway](https://)

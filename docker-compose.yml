@@ -20,7 +20,8 @@ services:
       - ./ftp:/opt/data
       - ./ftp:/opt/app
     networks:
-      - devops_network
+      devops_network: 
+        ipv4_address: 172.16.128.10
     healthcheck:
       test: ["CMD", "pwd"]
       interval: 3s
@@ -74,6 +75,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
+      POSTGRES_DB: movies
       PGDATA: /data/postgres
     volumes:
       - database-data:/var/lib/postgresql/data/
@@ -103,6 +105,9 @@ services:
 networks:
   devops_network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.128.0/24
   postgres:
     driver: bridge
 

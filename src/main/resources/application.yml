@@ -1,15 +1,25 @@
-app:
+spring:
   datasource:
-    main:
-      driver-class-name: org.postgresql.Driver
-      jdbc-url: jdbc:postgresql://localhost:5432/amigoscode
-      username: amigoscode
-      password: 'password'
-      pool-size: 30
-
-server:
-  error:
-    include-binding-errors: always
-    include-message: always
-
-
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://ec2-34-194-73-236.compute-1.amazonaws.com:5432/darboitrll1f8c
+    username: udzveceepmkuvq
+    password: 3d36da1911be1b9c617ca49d9f8450220714c38d3381e0f01ba8bf60483660cd
+    platform: postgres
+    initialization-mode: always
+    continue-on-error: true
+  db:
+      username: postgres
+      password: root
+      url: jdbc:postgresql://localhost/postgres
+  jpa:
+    show-sql: false
+#    generate-ddl: false
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false;
+  #      dialect: org.hibernate.dialect.MySQL5Dialect

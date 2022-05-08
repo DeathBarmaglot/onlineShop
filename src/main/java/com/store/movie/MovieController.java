@@ -1,36 +1,40 @@
 package com.store.movie;
 
-import org.springframework.web.bind.annotation.*;
+import com.store.movie.domain.Movie;
+import com.store.movie.impl.DefaultMovieService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "api/v1/movies")
+@RequestMapping(path = {"/", "/api/v1/movies"}, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MovieController {
 
-    private final MovieService movieService;
+    private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
+    private final DefaultMovieService movieService;
 
-    public MovieController(MovieService movieService) {
+    public MovieController(DefaultMovieService movieService) {
         this.movieService = movieService;
     }
 
     @GetMapping
-    public List<Movie> listMovies() {
-        return movieService.getMovies();
+    public List<Movie> getAll() {
+        List<Movie> all = movieService.getAll();
+        logger.info("get {} movies from db", all.size());
+        return all;
     }
 
-    @GetMapping("{id}")
-    public Movie getMovieId(@PathVariable("id") Long id) {
-        return movieService.getMovie(id);
-    }
-
-    @PostMapping
-    public void addMovie(@RequestBody Movie movie) {
-        movieService.addNewMovie(movie);
-    }
-
-    @DeleteMapping("{id}")
-    public void deleteMovie(@PathVariable("id") Long id) {
-        movieService.deleteMovie(id);
+    @GetMapping("/{movieId}")
+    public Optional<Movie> getMovieById(
+            @PathVariable(value = "movieId") Long id) {
+        logger.info("get movie by id:{} from db", id);
+        return movieService.getById(id);
     }
 }

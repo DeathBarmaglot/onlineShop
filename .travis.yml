@@ -5,31 +5,11 @@ jdk:
 before_script: sudo chmod +x mvnw
 
 script:
-  - sudo ./npm run build
   - sudo ./mvnw clean install
   - sudo ./mvn clean package -X
   - sudo ./java -Dserver.port=8080 -jar target/movie-0.0.1-SNAPSHOT.jar
   - sudo ./docker-compose up -d --force-recreate
-  - sudo ./mvn tomcat7:help
-  - sudo ./mvn tomcat7:deploy
-  - sudo ./mvn tomcat7:run
-  - sudo ./docker build --tag java-docker /docker/.
-  - sudo docker-machine ls
   - sudo ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
   - bash <(curl -s https://web-online-store.herokuapp.com/)
-
-
-#script:
-#  - sudo ./mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-#  - sudo ./mvn -Dflyway.configFiles=flyway.properties
-#  - sudo ./mvn -Dflyway.user=user -Dflyway.password=password
-#  - sudo ./mvn -Dflyway.schemas=schema
-#  - sudo ./mvn test
-#  - sudo ./mvn run -8080:8080 java-docker
-
-#  - sudo docker images
-#  - sudo docker run -8080:8080 java-docker
-
-
 
 after_success: bash <(curl -s https://reliable-dango-46b82b.netlify.app/)

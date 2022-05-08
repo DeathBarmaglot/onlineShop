@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -22,5 +21,8 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Run
-        run: mvn deploy
+      - name: Online-shop
+        run: java $JAVA_OPTS -jar target/movie-0.0.1-SNAPSHOT.jar -Dserver.port=$PORT $JAR_OPTS
+
+      - name: Deploy Online-shop
+        run: mvn -B -e deploy --file pom.xml --settings settings.xml

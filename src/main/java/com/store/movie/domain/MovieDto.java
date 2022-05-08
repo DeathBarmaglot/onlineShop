@@ -1,12 +1,12 @@
-package com.store.movie;
+package com.store.movie.domain;
 
 import lombok.Data;
 
 @Data
-class Movie {
+public class MovieDto {
     private Long movieId;
-    private String nameTranslate;
-    private String nameNative;
+    private String name;
+    private String nameOrigin;
     private String yearOfRelease;
     private String description;
     private double rating;
