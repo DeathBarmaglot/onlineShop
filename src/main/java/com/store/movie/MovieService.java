@@ -1,7 +1,6 @@
 package com.store.movie;
 
 import com.store.movie.domain.Movie;
-import com.store.movie.domain.MovieDto;
 
 import java.util.List;
 import java.util.Optional;
