@@ -1,4 +1,7 @@
 spring:
+  main:
+    banner_mode: off
+
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://ec2-34-194-73-236.compute-1.amazonaws.com:5432/darboitrll1f8c

@@ -1,7 +1,6 @@
 package com.store.movie;
 
 import com.store.movie.domain.Movie;
-import com.store.movie.domain.MovieDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -3,10 +3,10 @@ package com.store.movie.domain;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,13 +26,27 @@ public class Movie {
     private double price;
     private String picturePath;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "movie_genre",
+            joinColumns = {@JoinColumn(name = "movie_id")},
+            inverseJoinColumns = {@JoinColumn(name = "genre_id")})
+    private Set<com.store.gerne.domain.Genre> genres;
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
         Movie movie = (Movie) o;
-        return movieId != null && Objects.equals(movieId, movie.movieId);
+        return !(movie.getMovieId() == null || getMovieId() == null) && Objects.equals(getMovieId(), movie.getMovieId());
     }
 
     @Override
