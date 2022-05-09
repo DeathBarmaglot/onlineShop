@@ -35,15 +35,17 @@ public class DefaultMovieService implements MovieService {
                  .collect(Collectors.toList());
      }
 
-    // @Override
-    // public Optional<Movie> getByName(String name) {
-    //     return movieRepository.findByName(name);
-    // }
+     @Override
+     public Optional<Movie> getByName(String name) {
+//         return movieRepository.findByName(name);
+         return null;
+     }
 
-    // @Override
-    // public Iterable<Movie> getByGenreId(Long id) {
-    //     return movieRepository.findMoviesByGenre(id);
-    // }
+     @Override
+     public List<Movie> getByGenreId(Long id) {
+//         return movieRepository.findMoviesByGenre(id);
+         return null;
+     }
 
     @Override
     public Optional<Movie> getById(Long id) {

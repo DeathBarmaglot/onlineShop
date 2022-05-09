@@ -14,9 +14,7 @@ public interface MovieService {
 
     List<MovieDto> getRandom();
 
-    // Optional<Movie> getByName(String name);
+    Optional<Movie> getByName(String name);
 
-    // Iterable<Movie> getByGenreId(Long id);
-
-
+    List<Movie> getByGenreId(Long id);
 }
