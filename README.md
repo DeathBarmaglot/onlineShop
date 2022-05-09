@@ -14,8 +14,8 @@
 
 ### Guides
 
-* [Accessing Data with Heroku](https://web-online-store.herokuapp.com/))
-* [Building a React with Netlify](https://reliable-dango-46b82b.netlify.app)
+* [Accessing Data with Heroku](https://web-online-store.herokuapp.com/)
+* [Building a React with Netlify](https://react-movieland.netlify.app/)
 * [Instance Ubuntu with ssh](https://online.movie.org)
 * [Mobx](https://)
 

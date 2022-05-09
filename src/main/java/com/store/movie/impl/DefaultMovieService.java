@@ -2,14 +2,17 @@ package com.store.movie.impl;
 import com.store.movie.MovieRepository;
 import com.store.movie.MovieService;
 import com.store.movie.domain.Movie;
+import com.store.movie.domain.MovieDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DefaultMovieService implements MovieService {
-
+    final private ModelMapper modelMapper = new ModelMapper();
     final private MovieRepository movieRepository;
 
     public DefaultMovieService(MovieRepository movieRepository) {
@@ -17,14 +20,20 @@ public class DefaultMovieService implements MovieService {
     }
 
     @Override
-    public List<Movie> getAll() {
-        return movieRepository.findAll();
+    public List<MovieDto> getAll() {
+        List<Movie> movieList = movieRepository.findAll();
+        return movieList.stream().map(movie ->
+                modelMapper.map(movie, MovieDto.class))
+                .collect(Collectors.toList());
     }
 
-    // @Override
-    // public Iterable<Movie> getRandom() {
-    //     return movieRepository.getRandom();
-    // }
+     @Override
+     public List<MovieDto> getRandom() {
+         List<Movie> movieList = movieRepository.getRandom();
+         return movieList.stream().map(movie ->
+                         modelMapper.map(movie, MovieDto.class))
+                 .collect(Collectors.toList());
+     }
 
     // @Override
     // public Optional<Movie> getByName(String name) {

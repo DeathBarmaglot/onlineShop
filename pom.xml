@@ -8,11 +8,11 @@
             <name>Online Movie</name>
             <layout>default</layout>
             <id>releases</id>
-            <url>http://domain:port/content/repositories/releases</url>
+            <url>https://domain:port/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
-            <url>http://domain:port/content/repositories/snapshots</url>
+            <url>https://domain:port/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
     <modelVersion>4.0.0</modelVersion>
@@ -29,14 +29,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>movie</name>
     <description>project for Spring Boot</description>
+    <url>localhost:8080/</url>
     <properties>
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <db.url>jdbc:postgresql://ec2-34-194-73-236.compute-1.amazonaws.com:5432/darboitrll1f8c</db.url>
-        <db.user>udzveceepmkuvq</db.user>
-        <db.pwd>3d36da1911be1b9c617ca49d9f8450220714c38d3381e0f01ba8bf60483660cd</db.pwd>
     </properties>
 
     <dependencies>
@@ -88,6 +86,11 @@
             <artifactId>flyway-core</artifactId>
             <version>8.5.10</version>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -113,10 +116,10 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>8.5.0</version>
                 <configuration>
-                    <url>${db.url}</url>
-                    <user>${db.user}</user>
-                    <password>${db.pwd}</password>
+                    <url>jdbc:postgresql://localhost:5432/movie</url>
                     <baselineOnMigrate>true</baselineOnMigrate>
+                    <user>postgres</user>
+                    <password>root</password>
                     <locations>
                         <location>classpath:db/migration</location>
                     </locations>
