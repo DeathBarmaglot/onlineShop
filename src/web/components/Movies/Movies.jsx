@@ -10,7 +10,7 @@ const [movies, setMovies] = useState([]);
 
 const fetchMovies = () => {
   axios
-    .get("https://web-online-store.herokuapp.com/api/v1/movies")
+    .get("https://web-online-store.herokuapp.com/api/v1/movie/random")
     .then((res) => {
       setMovies(res.data);
     });

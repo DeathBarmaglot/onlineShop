@@ -10,7 +10,7 @@ const App = () => {
 
   const fetchCart = async () => {
     axios
-    .get("https://web-online-store.herokuapp.com/api/v1/card")
+    .get("https://web-online-store.herokuapp.com/api/v1/movie/3832")
     .then((res) => {
       setCart(res.data);
     });

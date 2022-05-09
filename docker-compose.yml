@@ -1,9 +1,6 @@
 version: "2.3"
 services:
 
-  java:
-    build: docker/java
-
   sftp:
     build: docker/ftp
     container_name: sftp
@@ -62,13 +59,10 @@ services:
   postgres:
     container_name: postgres
     image: postgres
-    # restart: always
-    env_file:
-      - db.env
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: movies
+      POSTGRES_DB: movie
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres

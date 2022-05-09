@@ -2,7 +2,9 @@ language: java
 jdk:
   - openjdk11
 
-before_script: sudo chmod +x mvnw
+before_script:
+  - sudo chmod +x mvnw
+  - sudo chmod +x mvn
 
 script:
   - sudo ./mvnw clean install
@@ -11,4 +13,4 @@ script:
   - sudo ./docker-compose up -d --force-recreate
   - bash <(curl -s https://web-online-store.herokuapp.com/)
 
-after_success: bash <(curl -s https://reliable-dango-46b82b.netlify.app/)
+after_success: bash <(curl -s https://react-movieland.netlify.app/)
