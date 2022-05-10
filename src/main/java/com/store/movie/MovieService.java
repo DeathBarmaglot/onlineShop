@@ -1,5 +1,6 @@
 package com.store.movie;
 
+import com.store.model.RequestProps;
 import com.store.movie.domain.Movie;
 import com.store.movie.domain.MovieDto;
 
@@ -8,13 +9,13 @@ import java.util.Optional;
 
 public interface MovieService {
 
-    List<MovieDto> getAll();
+    List<MovieDto> getAll(RequestProps props);
 
-    Optional<Movie> getById(Long id);
+    MovieDto getById(Long id);
 
     List<MovieDto> getRandom();
 
     Optional<Movie> getByName(String name);
 
-    List<Movie> getByGenreId(Long id);
+    List<MovieDto> getByGenreId(Long id);
 }

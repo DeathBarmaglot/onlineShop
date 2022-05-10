@@ -6,6 +6,7 @@
 * [Spring tomcat Server](http://172.16.128.10:8080/)
 * [DevTools](http://172.16.128.10:5500/)
 * [Postgres+PGAdmin](http://172.16.128.10:5432/)
+* [MySQL](http://172.16.128.10:3306/)
 * [CORS](http://172.16.128.10:7000/)
 * [Nginx](http://172.16.128.10:80/)
 * [Python pipeline](http://172.16.128.1:5050)

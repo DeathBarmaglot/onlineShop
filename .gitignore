@@ -24,7 +24,7 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-HELP.md
+TODO.md
 !**/src/main/java/com/movieland/cinema/utils/SetDb.java
 !**/src/main/java/com/movieland/cinema/utils/Parser.java
 !**/src/main/java/com/movieland/cinema/utils/FileReader.java
