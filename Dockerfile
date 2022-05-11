@@ -4,4 +4,4 @@ RUN apt-get update && apt-get install -qq -y \
   && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/src/app/
 COPY . /usr/src/app/
-CMD ["docker-compose","up","--force-recreate"]
+CMD ["/usr/src/app/docker-compose","up","--force-recreate"]
