@@ -8,9 +8,10 @@
 * [Postgres+PGAdmin](http://172.16.128.10:5432/)
 * [CORS](http://172.16.128.10:7000/)
 * [Nginx](http://172.16.128.10:80/)
-* [Python pipeline](http://172.16.128.1:5050)
+* [Python copy & parse movie.log](http://172.16.128.1:5050)
 * [SFTP](http://172.16.128.10:22/)
 * [Messaging with Redis](http://172.16.128.10/:6789)
+* [Debian](http://172.16.128.10/)
 
 ### Guides
 

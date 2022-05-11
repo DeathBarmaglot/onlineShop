@@ -2,7 +2,7 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8082;
 const app = express();
 const db = require("./models");
 
@@ -22,13 +22,13 @@ require("./routes/routes")(app);
 await db.sequelize.sync();
 app.listen(PORT, () => console.log(`Server started on port @{PORT}`));
 
-// const start = async () => {
-//   try {
-//     await db.sequelize.authenticate();
-//     await db.sequelize.sync();
-//     app.listen(PORT, () => console.log(`Server started on port @{PORT}`));
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
-// start();
+const start = async () => {
+  try {
+    await db.sequelize.authenticate();
+    await db.sequelize.sync();
+    app.listen(PORT, () => console.log(`Server started on port @{PORT}`));
+  } catch (e) {
+    console.log(e);
+  }
+};
+start();

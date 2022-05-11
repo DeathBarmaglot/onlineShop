@@ -7,7 +7,5 @@ create table movie (
                        rating NUMERIC(3, 1),
                        price NUMERIC(6, 2),
                        picture_path VARCHAR (1024),
-                       countries VARCHAR REFERENCES country(country_id),
-                       genres VARCHAR REFERENCES genre(genre_id),
-                       reviews VARCHAR REFERENCES review(review_id)
+                       genres VARCHAR REFERENCES genre(genre_id)
 );
