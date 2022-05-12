@@ -9,3 +9,9 @@ CREATE TABLE IF NOT EXISTS countries
     country_id  SERIAL PRIMARY KEY,
     country_name        VARCHAR(100) UNIQUE NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS movie_countries
+(
+    movie_id  SERIAL PRIMARY KEY,
+    country_id       PRIMARY KEY
+);

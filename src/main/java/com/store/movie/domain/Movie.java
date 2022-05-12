@@ -1,8 +1,12 @@
 package com.store.movie.domain;
 
+import com.store.country.Country;
+import com.store.gerne.domain.Genre;
+import com.store.review.Review;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -20,11 +24,24 @@ public class Movie {
     private String nameTarget;
     private String nameOrigin;
     private String yearOfRelease;
+    private double price;
+    private String picturePath;
     @Column(name = "description", length = 1024)
     private String description;
     private double rating;
-    private double price;
-    private String picturePath;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "movie_countries",
+            joinColumns = {@JoinColumn(name = "movie_id")},
+            inverseJoinColumns = {@JoinColumn(name = "country_id")})
+    private Set<Country> countries;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Review> reviews;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
@@ -34,19 +51,14 @@ public class Movie {
     @JoinTable(name = "movie_genre",
             joinColumns = {@JoinColumn(name = "movie_id")},
             inverseJoinColumns = {@JoinColumn(name = "genre_id")})
-    private Set<com.store.gerne.domain.Genre> genres;
+    private Set<Genre> genres;
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Movie movie = (Movie) o;
-        return !(movie.getMovieId() == null || getMovieId() == null) && Objects.equals(getMovieId(), movie.getMovieId());
+        return movieId != null && Objects.equals(movieId, movie.movieId);
     }
 
     @Override

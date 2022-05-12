@@ -3,6 +3,7 @@ package com.store.movie;
 import com.store.model.RequestProps;
 import com.store.model.SortDirection;
 import com.store.movie.domain.MovieDto;
+import com.store.movie.domain.MovieFull;
 import com.store.movie.impl.DefaultMovieService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,7 @@ public class MovieController {
     }
 
     @GetMapping("/{movieId}")
-    public MovieDto getMovieById(@PathVariable(value = "movieId") Long id) {
+    public MovieFull getMovieById(@PathVariable(value = "movieId") Long id) {
         logger.info("Get movie by id#{} from Database", id);
         return movieService.getById(id);
     }
