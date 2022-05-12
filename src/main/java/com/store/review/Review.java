@@ -1,5 +1,6 @@
-package com.store.movie.entity;
+package com.store.review;
 
+import com.store.movie.domain.Movie;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

@@ -1,6 +1,5 @@
-package com.store.movie.repository;
+package com.store.review;
 
-import com.store.movie.entity.Review;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -9,5 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReviewRepository extends CrudRepository<Review, Long> {
 
-    Iterable<Review> findAll();
-}
+    Iterable<Review> findAll();}

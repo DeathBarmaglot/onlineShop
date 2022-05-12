@@ -1,12 +1,14 @@
 package com.store.country;
 
-import com.store.movie.domain.Movie;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
@@ -18,10 +20,6 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long countryId;
     private String countryName;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_id")
-    private Movie movie;
 
     @Override
     public boolean equals(Object o) {
@@ -38,8 +36,6 @@ public class Country {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "countryId = " + countryId + ", " +
-                "name = " + countryName + ")";
+        return getClass().getSimpleName() + "(" + "countryId = " + countryId + ", " + "name = " + countryName + ")";
     }
 }

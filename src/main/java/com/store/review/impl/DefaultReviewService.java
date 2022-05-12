@@ -1,8 +1,8 @@
-package com.store.movie.impl;
+package com.store.review.impl;
 
-import com.store.movie.entity.Review;
-import com.store.movie.repository.ReviewRepository;
-import com.store.movie.service.ReviewService;
+import com.store.review.Review;
+import com.store.review.ReviewRepository;
+import com.store.review.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

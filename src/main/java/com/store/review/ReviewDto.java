@@ -1,4 +1,4 @@
-package com.store.movie.entity.dto;
+package com.store.review;
 
 import lombok.Data;
 

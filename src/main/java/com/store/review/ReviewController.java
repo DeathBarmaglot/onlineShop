@@ -1,7 +1,6 @@
-package com.store.movie.controller;
+package com.store.review;
 
-import com.store.movie.entity.Review;
-import com.store.movie.service.impl.DefaultReviewService;
+import com.store.review.impl.DefaultReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
