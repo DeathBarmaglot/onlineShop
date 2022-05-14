@@ -6,7 +6,6 @@ import useStyles from './styles';
 const Slider = ({movie}) => {
 
   const classes = useStyles();
-  console.log(movie)
 
 return (
   <div>

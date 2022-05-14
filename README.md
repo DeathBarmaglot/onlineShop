@@ -1,5 +1,5 @@
 # Online movies
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c5d25c42-cfe4-43ba-8aa5-6757fbcbd4f9/deploy-status)](https://app.netlify.com/sites/react-movieland/deploys)
 ### Reference Documentation
 
 * [React](http://172.16.128.10:3000/)

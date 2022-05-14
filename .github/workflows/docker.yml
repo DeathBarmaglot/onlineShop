@@ -20,5 +20,5 @@ jobs:
       - name: Create the Docker image
         run: docker network create --subnet=172.16.0.0/16 movieland.com
 
-      - name: Run the Docker image
-        run: docker run --net movieland.com --ip 172.16.128.10 -it ubuntu bash
+#      - name: Run the Docker image
+#        run: docker run --net movieland.com --ip 172.16.128.10 -it ubuntu bash
