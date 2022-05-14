@@ -22,13 +22,29 @@ const Movies = () => {
   const classes = useStyles();
 
   return (
-    <main className={classes.content}>
+    <main className={classes.content}>      
       <div id="app">
-        {/* <div className={classes.toolbar}></div> */}
-        <div id="hero">
-          <h1>Movie Land</h1>
+        <div id="icons">
+              <i className="fa fa-apple" id="apple"></i>
+              <i className="fa fa-linkedin-square" id="twitter"></i>
+              <i className="fa fa-github-square github" id="github"></i>
+              <i className="fa fa-facebook-square" id="facebook"
+                href="https://www.facebook.com/deathbarmaglot"></i>
         </div>
+        <div className={classes.toolbar}></div>
+        <div id="hero">
+          <h1 class="disappear">
+            <span>M</span>
+            <span>o</span>
+            <span>v</span>
+            <span>i</span>
+            <span>E</span> <span>L</span>
+            <span>A</span>
+            <span>n</span>
+            <span>D</span>
 
+          </h1>
+        </div>
         <Grid container justifyContent="center" spacing={2}>
           {movies.map((movie) => (
             <Grid item key={movie.movieId} xs={10} md={3}>

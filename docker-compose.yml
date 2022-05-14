@@ -19,23 +19,23 @@ services:
       retries: 5
       start_period: 1s
 
-#  python:
-#    build: docker/python
-#    container_name: python
-#    volumes:
-#      - ./python:/opt/data
-#      - ./python:/opt/app
-#    depends_on:
-#      sftp:
-#        condition: service_healthy
-#    environment:
-#      - ENV=development
-#    healthcheck:
-#      test: ["CMD-SHELL", "test -f /opt/app/movies.log"]
-#      interval: 3s
-#      timeout: 5s
-#      retries: 10
-#      start_period: 1s
+  python:
+    build: docker/python
+    container_name: python
+    volumes:
+      - ./python:/opt/data
+      - ./python:/opt/app
+    depends_on:
+      sftp:
+        condition: service_healthy
+    environment:
+      - ENV=development
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /opt/app/movies.log"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+      start_period: 1s
 
   nginx:
     build: docker/nginx

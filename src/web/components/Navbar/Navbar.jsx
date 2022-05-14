@@ -3,7 +3,6 @@ import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import useStyles from '../Navbar/styles';
 import logo from './logo.png';
-import "../../../App.css";
 
 const Navbar = () => {
   const classes = useStyles();
@@ -20,8 +19,6 @@ const Navbar = () => {
           <div className={classes.button}>
             <IconButton aria-label="Show cart items" color="default">
                 <ShoppingCart />
-              {/* <Badge badgeContent={2} color="secondary">
-              </Badge> */}
             </IconButton>
           </div>
         </Toolbar>

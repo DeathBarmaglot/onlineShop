@@ -1,4 +1,3 @@
-import useStyles from "./styles";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Slider from "./Slider";
@@ -20,18 +19,14 @@ const Sliders = () => {
     fetchMovies();
   }, []);
 
-  const classes = useStyles();
-
   return (
-    <main className={classes.content}>
+    <main>
       <div id="app">
         <div id="hero">
-          <h1>Movie Land</h1>
         </div>
-
-        <Grid container justifyContent="center" spacing={2}>
+        <Grid container justifyContent="center" spacing={0}>
           {movies.map((movie) => (
-            <Grid item key={movie.movieId} xs={10} md={3}>
+            <Grid item key={movie.imdbID} xs={5} md={2}>
               <Slider movie={movie} />
             </Grid>
           ))}

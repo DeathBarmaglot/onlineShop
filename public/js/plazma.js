@@ -1,4 +1,5 @@
 import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.2/build/threejs-toys.module.cdn.min.js'
+
 neonCursor({
   el: document.getElementById('app'),
   shaderPoints: 16,
