@@ -1,17 +1,18 @@
+import useStyles from "./styles";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import Movie from "./Movie";
-import useStyles from "./styles";
+import Slider from "./Slider";
 import { Grid } from "@material-ui/core";
 
-const Movies = () => {
+const Sliders = () => {
+
   const [movies, setMovies] = useState([]);
 
   const fetchMovies = () => {
     axios
-      .get("https://web-online-store.herokuapp.com/api/v1/movie/random")
+    .get("http://www.omdbapi.com/?s=spider&apikey=c0bf5d80")
       .then((res) => {
-        setMovies(res.data);
+        setMovies(res.data.Search);
       });
   };
 
@@ -24,7 +25,6 @@ const Movies = () => {
   return (
     <main className={classes.content}>
       <div id="app">
-        {/* <div className={classes.toolbar}></div> */}
         <div id="hero">
           <h1>Movie Land</h1>
         </div>
@@ -32,7 +32,7 @@ const Movies = () => {
         <Grid container justifyContent="center" spacing={2}>
           {movies.map((movie) => (
             <Grid item key={movie.movieId} xs={10} md={3}>
-              <Movie movie={movie} />
+              <Slider movie={movie} />
             </Grid>
           ))}
         </Grid>
@@ -40,5 +40,4 @@ const Movies = () => {
     </main>
   );
 };
-
-export default Movies;
+export default Sliders;

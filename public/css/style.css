@@ -9,12 +9,12 @@ body, html, #app {
   }
   
   #app h1 {
-    --fontSize: 70px;
+    --fontSize: 50px;
     --lineHeight: 90px;
     width: auto;
-    height: calc(2 * var(--lineHeight));
+    /* height: calc(2 * var(--lineHeight)); */
     line-height: var(--lineHeight);
-    margin: calc(50vh - var(--lineHeight)) auto 0;
+    /* margin: calc(50vh - var(--lineHeight)) auto 0; */
     text-align: center;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
