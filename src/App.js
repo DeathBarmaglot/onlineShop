@@ -1,3 +1,4 @@
+import React from 'react'
 import {Movies, Sliders } from './web/components';
 import "./App.css";
 

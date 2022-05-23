@@ -33,7 +33,7 @@ const Movies = () => {
         </div>
         <div className={classes.toolbar}></div>
         <div id="hero">
-          <h1 class="disappear">
+          <h1 className="disappear">
             <span>M</span>
             <span>o</span>
             <span>v</span>
