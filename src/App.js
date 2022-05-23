@@ -1,5 +1,5 @@
-import React from 'react'
-import {Movies, Sliders } from './web/components';
+import React from 'react';
+import { Movies, Sliders } from './web/components';
 import "./App.css";
 
 const App = () => {

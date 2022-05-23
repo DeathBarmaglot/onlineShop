@@ -2,51 +2,66 @@ version: "2.3"
 services:
 
   sftp:
-    build: docker/ftp
-    container_name: sftp
-    ports:
-      - "223:22"
+    build: sftp/
     volumes:
-      - ./ftp:/opt/data
-      - ./ftp:/opt/app
-    networks:
-      devops_network: 
-        ipv4_address: 172.16.128.10
+        - ./result:/home/devops/upload
+        - ./logs:/home/devops/logs
+    ports:
+        - "223:22"
+    command: devops:pass:::upload
     healthcheck:
-      test: ["CMD", "pwd"]
-      interval: 3s
-      timeout: 5s
-      retries: 5
-      start_period: 1s
+       test:  ["CMD-SHELL", "test -f /home/devops/logs/movie.log"]
+       interval: 5s
+       timeout: 10s
+       retries: 50 
+       start_period: 10s
 
   python:
-    build: docker/python
-    container_name: python
+    build: docker/python/
     volumes:
-      - ./python:/opt/data
-      - ./python:/opt/app
+        - ./logs:/opt/apt/logs
+        - ./result:/opt/apt/result
     depends_on:
       sftp:
         condition: service_healthy
     environment:
-      - ENV=development
+     - ENV=development
     healthcheck:
-      test: ["CMD-SHELL", "test -f /opt/app/movies.log"]
-      interval: 3s
-      timeout: 5s
-      retries: 10
-      start_period: 1s
+       test:  ["CMD-SHELL", "test -f /opt/apt/result/movies_logs.xlsx"]
+       interval: 5s
+       timeout: 10s
+       retries: 100
+       start_period: 60s
 
-  nginx:
-    build: docker/nginx
-    container_name: nginx
+  react_server:
+    build: react_server
+    ports:
+      - "7000:7000"
+    links:
+      - target_nginx
     networks:
       static-network:
-        ipv4_address: 172.16.128.10
+        ipv4_address: 172.20.128.10
+    extra_hosts:
+     - "online.movie.com:172.20.128.20"
+
+  nginx:
+    depends_on:
+      python:
+        condition: service_started
+    build: docker/nginx/
+    container_name: nginx    
+    links:
+      - dummy_web_server
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.20    
     ports:
-      - "80:883"
+        - "883:80"
     volumes:
-      - ./ftp:/opt/app
+        - ./ftp:/opt/app
+        - ./nginx/custom.conf:/etc/nginx/nginx.conf:ro
+        - ./nginx/app:/opt/app
     environment:
       - ENV=development
     healthcheck:
@@ -88,15 +103,12 @@ services:
       - postgres
     restart: unless-stopped
 
-networks:
-  devops_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.16.128.0/24
-  postgres:
-    driver: bridge
-
 volumes:
   postgres:
   pgadmin:
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

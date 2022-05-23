@@ -1,6 +1,6 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 10s linear;
+    animation: App-logo-spin infinite 10s ease-in-out;
     margin-right: 20px;
   }
 }
@@ -76,7 +76,7 @@ body {
   color:transparent;
   text-shadow: 0px 0px 0px white;
   animation-duration: 10s;
-  animation-iteration-count: forward;
+  animation-iteration-count: infinite;
 }
 .disappear span:nth-child(1){
   animation-name: disappearleft;

@@ -1,10 +1,12 @@
 package com.store.gerne.domain;
 
+import com.store.movie.domain.Movie;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,7 +26,7 @@ public class Genre {
                     CascadeType.MERGE
             },
             mappedBy = "genres")
-    private Set<com.store.movie.domain.Movie> movies;
+    private Set<Movie> movies;
 
     @Override
     public boolean equals(Object o) {

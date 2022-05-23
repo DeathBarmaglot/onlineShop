@@ -17,7 +17,7 @@
 
 * [Accessing Data with Heroku](https://web-online-store.herokuapp.com/)
 * [Building a React with Netlify](https://react-movieland.netlify.app/)
-* [Instance Ubuntu with ssh](https://online.movie.org)
+* [Instance Ubuntu with ssh](https://online.movie.com)
 
 * [Serving Web Content with Spring MVC](https://)
 * [Building REST services with Spring](https://)
