@@ -7,10 +7,40 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Web site created By Spring & React"/>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<script
+		src="https://code.jquery.com/jquery-1.12.4.min.js"
+		integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+		crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+
     <title>Online Store</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+<div id="container3">
+  <span id="text1"></span>
+  <span id="text2"></span>
+</div>
+<svg id="filters">
+  <defs>
+    <filter id="threshold">
+      <feColorMatrix in="SourceGraphic"
+          type="matrix"
+          values="1 0 0 0 0
+                  0 1 0 0 0
+                  0 0 1 0 0
+                  0 0 0 255 -140" />
+    </filter>
+  </defs>
+</svg>
   </body>
+  <!-- <script type="module" src="./js/plazma.js"></script> -->
+  <script src="./js/script.js"></script>
+<script>
+</script>
 </html>

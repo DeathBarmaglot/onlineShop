@@ -3,10 +3,10 @@ import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } fro
 import { AddShoppingCart } from '@material-ui/icons';
 import useStyles from './styles';
 
-const Movie = ({movie}) => {
+const Movie = ({movie, onAddToCart}) => {
 const classes = useStyles();
 
-console.log(movie)
+ console.log(movie)
 
   return (
     <div>
@@ -24,7 +24,7 @@ console.log(movie)
             <Typography variant="body2" color="textSecondary">{movie.nameOrigin}</Typography>
           </CardContent>
           <CardActions disableSpacing className={classes.cardActions}>
-            <IconButton aria-label="Add to Cart">
+            <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(movie.movieId, 1)}>
               <AddShoppingCart />
             </IconButton>
           </CardActions>
@@ -34,3 +34,4 @@ console.log(movie)
 }
 
 export default Movie;
+// 

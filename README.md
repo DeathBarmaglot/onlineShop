@@ -1,5 +1,5 @@
 # Online movies
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c5d25c42-cfe4-43ba-8aa5-6757fbcbd4f9/deploy-status)](https://app.netlify.com/sites/react-movieland/deploys)
 ### Reference Documentation
 
 * [React](http://172.16.128.10:3000/)
@@ -17,7 +17,7 @@
 
 * [Accessing Data with Heroku](https://web-online-store.herokuapp.com/)
 * [Building a React with Netlify](https://react-movieland.netlify.app/)
-* [Instance Ubuntu with ssh](https://online.movie.org)
+* [Instance Ubuntu with ssh](https://online.movie.com)
 
 * [Serving Web Content with Spring MVC](https://)
 * [Building REST services with Spring](https://)
