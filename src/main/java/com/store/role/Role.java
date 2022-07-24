@@ -1,9 +1,8 @@
-package com.store.user;
+package com.store.role;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,14 +15,12 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "role_id")
-    private String roleId;
+    private Long roleId;
     @Column(name = "name")
     private String name;
-    @Column(name = "token")
-    private String token;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "users")
-    private User user;
-
+    public Role(Long roleId, String name) {
+        this.name = name;
+        this.roleId = roleId;
+    }
 }

@@ -9,5 +9,10 @@
       "name": "currency.nbu.url",
       "type": "java.lang.String",
       "description": "Description for currency.nbu.url."
+    },
+    {
+      "name": "jwt.token.time",
+      "type": "java.lang.String",
+      "description": "Description for jwt.token.time."
     }
   ] }

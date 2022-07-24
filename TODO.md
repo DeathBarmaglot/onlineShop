@@ -42,8 +42,40 @@ Response example:{
 {"id": 2,"user": {"id": 4,"nickname": "Габриэль Джексон"},"text": "Кино это является"}]
 }
 B-7
+
 1. In DB, all prices are stored in UAH.
 2. Price can be converted to USD or EUR.
 3. For example, /v1/movie/{movieId}?currency=USD.
 4. Prices should be converted according to today NBU rate.
 5. By default, selected currency is UAH.
+
+S-1
+Security
+URL to logout should be /v1/logout, HTTP method DELETE.
+URL to login should be /v1/login, HTTP method POST.
+
+Request header should contain valid "uuid" value.
+In case of wrong combination of login\password send back 400 Bad request.
+
+We need to have security service, 
+which allows to handle auth request with user login and password, 
+and return generated identifier (token) to this user.
+
+On server side we will link particular user with generated token (uuid), 
+and in case of incoming request with this token, we will be able 
+to recognize request's owner.
+
+Each link between user and token should be stored in cache 
+(use java, or any other collection) for 2 hours. 
+After this time, it should be removed from cache.
+
+Request body example:
+{
+"email" : "ronald.reynolds66@example.com",
+"password" : "paco"
+}
+Response example:
+{
+"uuid": "e5e84a87-2732-422e-8b1a-bd61ad7ec399",
+"nickname": "Рональд Рейнольдс"
+}

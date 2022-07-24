@@ -29,7 +29,7 @@ public class Review {
     private Movie movie;
 
     @ManyToOne()
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "id")
     private User user;
 
     @Override
